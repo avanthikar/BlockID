@@ -1,0 +1,118 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TickIn</title>
+
+    <%= stylesheet_link_tag "sb-admin-2.css" %>
+    <%=javascript_include_tag "bootstrap.min.js"%>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/stud/1"><%=image_tag("meme.png", size: "30x30")%></a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li></a>
+            </ul>
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="std-page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"><%=@user.name%>'s Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <%m=1%>
+                                <%@checkins.each do |x|%>
+                                <%if m%2==1%>
+                                    <li>
+                                        <div class="timeline-badge"><i class="fa fa-check"></i>
+                                        </div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title"><%=x.status%></h4>
+                                                <p>Block Hash:</p>
+                                                <p><%=x.hashkey%></p>
+                                                <p><small class="text-muted"><i class="fa fa-clock-o"></i><%=x.time%></small>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <%else%>
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge"><i class="fa fa-check"></i>
+                                        </div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title"><%=x.status%></h4>
+                                                <p>Block Hash:</p>
+                                                <p><%=x.hashkey%></p>
+                                                <p><small class="text-muted"><i class="fa fa-clock-o"></i><%=x.time%></small>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <%end%>
+                                <%m+=1%>
+                                <%end%>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+
+
+</body>
